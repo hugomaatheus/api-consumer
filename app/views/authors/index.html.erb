@@ -1,0 +1,27 @@
+<%= link_to "Novo Autor", new_author_path %>
+	<%if @authors.present? %>
+	  <p>Autores</p>
+	  <table width="100%">
+	    <thead>
+				<tr>
+		      <td>Nome</td>
+		      <td>Idade</td>
+		    </tr>
+			</thead>
+
+	    <tbody>
+				<%@authors.each do |author|%>
+		    <tr>
+		      <td><%= author.name %></td>
+		      <td><%= author.age %></td>
+		      <td>
+		        <%= link_to "Editar", edit_author_path(author[:id]) %> |
+		        <%= link_to "Excluir", author_path(author[:id]), :method => :delete %>
+		      </td>
+		    </tr>
+		   <%end%>
+			</tbody>
+	  </table>
+	<%else%>
+	  <p>Nenhum author encontrado</p>
+	<%end%>
